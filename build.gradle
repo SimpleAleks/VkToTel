@@ -13,7 +13,7 @@ plugins {
 
 // Название группы, к которой относится проект
 // Группа это например компания, организация или команда
-group 'org.example'
+group 'com.simplealeks'
 
 // Версия проекта
 version '1.0-SNAPSHOT'
@@ -29,6 +29,12 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    //Библиотека для удобной работы с Vk SDK, методом LongPoll API
+    compile 'com.github.yvasyliev:java-vk-bots-longpoll-api:2.1.7'
+    //Библиотека Vk Api SDK
+    compile 'com.vk.api:sdk:1.0.7'
+    //Библиотека для работы с Telegram Api
+    implementation 'com.github.pengrad:java-telegram-bot-api:5.3.0'
 }
 
 // Настройки для тестирования
@@ -40,7 +46,7 @@ test {
 // Настройки для плагина application
 application {
     // Указываем главный класс приложения
-    mainClass = 'sevsu.Main'
+    mainClass = 'sevsu.HelloBot'
 }
 
 // Настройки для задачи run
