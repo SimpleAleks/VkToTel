@@ -17,13 +17,14 @@ public class VkRequest extends LongPollBot {
         try {
             Message message = messageNewEvent.getMessage();//Создания объекта Message с содержащим полученного сообщения
             if (message.hasText()) {//Если в сообщении есть текст
-                String response = "Test message with resend: " + message.getText();//Промежуточный код для проверки работы кода
+                TelegramSend.sendTG(message.getText());//Отправка сообщения в телеграм
+                String response = "The message " + message.getText() + " was replying.";//Промежуточный код для проверки работы кода
                 vkBotsApi.messages().send()
                         .setPeerId(message.getPeerId())
                         .setMessage(response)
                         .execute();
             }
-        } catch (VkApiException e) {
+        } catch (VkApiException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -38,7 +39,7 @@ public class VkRequest extends LongPollBot {
         return Integer.parseInt(getProperties("group_id"), 10);//Загрузка id группы из конфигурационного файла и перевод String -> Int
     }
 
-    public String getProperties(String propertieName) { //Метод для получения настрйоки из конфиг файла
+    public static String getProperties(String propertieName) { //Метод для получения настрйоки из конфиг файла
         File file = new File("src\\main\\resources\\data.properties");//Создание объекта File с путём к конфиг файлу
         Properties properties = new Properties(); //Создание объекта Properties для чтения конфиг файла
         try {
