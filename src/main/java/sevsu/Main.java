@@ -1,10 +1,11 @@
 package sevsu;
 
-/**
- * Главный класс.
- */
+import api.longpoll.bots.BotsLongPoll;
+import api.longpoll.bots.exceptions.VkApiException;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
+
+    public static void main(String[] args) throws VkApiException {
+        new BotsLongPoll(new VkRequest()).run(); //Запуск VK бота
     }
 }
