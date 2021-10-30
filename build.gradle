@@ -46,7 +46,7 @@ test {
 // Настройки для плагина application
 application {
     // Указываем главный класс приложения
-    mainClass = 'sevsu.HelloBot'
+    mainClass = 'sevsu.Main'
 }
 
 // Настройки для задачи run
